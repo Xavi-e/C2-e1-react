@@ -1,16 +1,16 @@
 import { useState } from "react";
 
 function App() {
-  const getoPosicionAleatoria = () => ({
+  const getPosicionAleatoria = () => ({
     top: Math.floor(Math.random() * window.innerHeight),
     left: Math.floor(Math.random() * window.innerWidth),
   });
   const [puntos, setPuntos] = useState(0);
-  const [posicion, setPosicion] = useState(getoPosicionAleatoria());
+  const [posicion, setPosicion] = useState(0);
   const cambiarPosicion = () => {
     setTimeout(() => {
-      setPosicion(getoPosicionAleatoria());
-    }, 300);
+      setPosicion(getPosicionAleatoria());
+    }, 3000);
   };
   const aumentarPuntuacion = () => {
     setPuntos(puntos + 1);
