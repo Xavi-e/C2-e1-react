@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  const getoPosicionAleatoria = () => ({
+    top: Math.floor(Math.random() * window.innerHeight),
+    left: Math.floor(Math.random() * window.innerWidth),
+  });
+  const [puntos, setPuntos] = useState(0);
+  const [posicion, setPosicion] = useState(getoPosicionAleatoria());
+  const cambiarPosicion = () => {
+    setTimeout(() => {
+      setPosicion(getoPosicionAleatoria());
+    }, 300);
+  };
+  const aumentarPuntuacion = () => {
+    setPuntos(puntos + 1);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <p>Puntos: {puntos}</p>
+      <i
+        className="fab fa-fly globo"
+        style={{ top: posicion.top, left: posicion.left }}
+        onMouseOver={cambiarPosicion()}
+        onClick={aumentarPuntuacion}
+      ></i>
+    </>
   );
 }
 
